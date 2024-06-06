@@ -1,4 +1,4 @@
 # ZAP CLient API 
 
 Multiple languages are available : 
- - [Python](python/README.md)
+ - [Python](python/)
