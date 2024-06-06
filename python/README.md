@@ -1,4 +1,4 @@
-# ZAP CLient API - Python
+# ZAP Client API - Python
 
 ## Requirements
 ```txt
