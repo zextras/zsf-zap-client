@@ -5,7 +5,10 @@ class Zap:
     def __init__(self):
         self.configuration = configuration.Configuration()
 
-    def load_config(self, filepath):
+    def load_config(self, values):
+        self.configuration.load_json(values)
+
+    def load_config_file(self, filepath):
         self.configuration.load(filepath)
 
     def get(self, path, headers=None, params=None):

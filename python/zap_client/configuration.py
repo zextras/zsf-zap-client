@@ -21,7 +21,7 @@ class Configuration(metaclass=SingletonMeta):
                 config_data = json.load(config_file)
                 self.load_json(config_data)
         except:
-            exit("Exception")
+            raise InvalidConfigurationException("Failed while loading config file")
 
     def load_json(self, datas):
         keys = datas.keys()
@@ -30,7 +30,7 @@ class Configuration(metaclass=SingletonMeta):
             if attr in keys:
                 setattr(self, attr, datas[attr])
             else:
-                raise InvalidConfigurationException
+                raise InvalidConfigurationException(f"Invalid parameter value for {attr}")
 
     def get_baseurl(self):
         if self.URL_PORT is None:

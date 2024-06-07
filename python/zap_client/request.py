@@ -2,6 +2,7 @@ import hashlib
 import json
 import time
 import http.client
+from .exceptions import *
 
 
 class Request:
@@ -48,5 +49,19 @@ class Request:
         if response.status == 200:
             decode = response.read().decode()
             return json.loads(decode)
+        elif response.status == 400:
+            raise BadRequestException(response.message)
+        elif response.status == 401:
+            raise UnauthorizedException(response.message)
+        elif response.status == 403:
+            raise ForbiddenException(response.message)
+        elif response.status == 404:
+            raise NotFoundException(response.message)
+        elif response.status == 422:
+            raise ImprocessableException(response.message)
+        elif response.status == 429:
+            raise TooManyRequestsException(response.message)
+        elif response.status == 500:
+            raise InternalServerErrorException(response.message)
         else:
-            return None
+            raise Exception(response.message)
