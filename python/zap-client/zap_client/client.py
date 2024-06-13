@@ -127,7 +127,7 @@ class Client:
             'GET',
             path,
             transform_response=_parse_response
-        )['data']
+        )
 
     def get_calendar_resource(self, id: str):
         return self.__request(
@@ -136,12 +136,17 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_calendar_resources(self):
+    def get_calendar_resources(self, page: int = None):
+        if page is None:
+            path = '/api/v1/calendar-resources'
+        else:
+            path = f'/api/v1/calendar-resources/?page={page}'
+
         return self.__request(
             'GET',
-            '/api/v1/calendar-resources',
+            path,
             transform_response=_parse_response
-        )['data']
+        )
 
     def get_class_of_service(self, id: str):
         return self.__request(
@@ -150,12 +155,17 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_classes_of_service(self):
+    def get_classes_of_service(self, page: int = None):
+        if page is None:
+            path = '/api/v1/classes-of-service'
+        else:
+            path = f'/api/v1/classes-of-service/?page={page}'
+
         return self.__request(
             'GET',
-            '/api/v1/classes-of-service',
+            path,
             transform_response=_parse_response
-        )['data']
+        )
 
     def get_distribution_list(self, id: str):
         return self.__request(
@@ -164,12 +174,17 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_distribution_lists(self):
+    def get_distribution_lists(self, page: int = None):
+        if page is None:
+            path = '/api/v1/classes-of-service'
+        else:
+            path = f'/api/v1/classes-of-service/?page={page}'
+
         return self.__request(
             'GET',
-            '/api/v1/distribution-lists',
+            path,
             transform_response=_parse_response
-        )['data']
+        )
 
     def get_domain(self, id: str):
         return self.__request(
@@ -178,12 +193,17 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_domains(self):
+    def get_domains(self, page: int = None):
+        if page is None:
+            path = '/api/v1/classes-of-service'
+        else:
+            path = f'/api/v1/classes-of-service/?page={page}'
+
         return self.__request(
             'GET',
-            '/api/v1/domains',
+            path,
             transform_response=_parse_response
-        )['data']
+        )
 
     def update_account(self, id: str, attributes: dict):
         return self.__request(
