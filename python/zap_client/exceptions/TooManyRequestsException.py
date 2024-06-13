@@ -1,2 +1,0 @@
-class TooManyRequestsException(Exception):
-    pass

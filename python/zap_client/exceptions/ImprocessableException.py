@@ -1,2 +1,0 @@
-class ImprocessableException(Exception):
-    pass

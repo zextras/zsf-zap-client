@@ -1,4 +1,4 @@
 # ZAP Client API 
 
 Multiple languages are available : 
- - [Python](python/)
+ - [Python](python/zap-client/README.md)
