@@ -176,9 +176,9 @@ class Client:
 
     def get_distribution_lists(self, page: int = None):
         if page is None:
-            path = '/api/v1/classes-of-service'
+            path = '/api/v1/distribution-lists'
         else:
-            path = f'/api/v1/classes-of-service/?page={page}'
+            path = f'/api/v1/distribution-lists/?page={page}'
 
         return self.__request(
             'GET',
