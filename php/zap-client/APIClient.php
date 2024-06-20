@@ -74,6 +74,7 @@ class APIClient
         $result = $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
+    //Calls methods which create url(1), timestamp(2), body(3), signature(4), headers(5) and make request(6).
     private function build_request(string $resource, string $method, string $id, array $params, array $arr_body)
     {
         $url = $this->make_url($resource, $id, $params);
@@ -84,6 +85,10 @@ class APIClient
         $this->make_request($url, $headers, $method, $body);
     }
 
+    //1. Creates url.
+    //$resource = endpoint
+    //$id = account id
+    //$params = page offset
     private function make_url(string $resource, string $id = '', array $params = [])
     {
         if ($params === [])
@@ -96,11 +101,14 @@ class APIClient
         return $this->root . $resource . $id . $params;
     }
 
+    //2. Defines timestamp.
     private function make_timestamp(): int
     {
         return round(microtime(true) * 1000);
     }
 
+    //3. Defines body.
+    //$arr_body = request body not 'json parsed'
     private function make_body(array $arr_body)
     {
         if ($arr_body === [])
@@ -114,11 +122,19 @@ class APIClient
         return $body;
     }
 
+    //4. Constructs signature.
+    //$url = complete url
+    //$method = http verb
+    //$body = 'json parsed' body request
+    //$timestamp = timestamp defines by make_timestamp()
     private function make_signature(string $url, string $method, string $body, int $timestamp)
     {
         return hash('sha256', "{$this->apiSecret}|{$timestamp}|{$method}|{$url}|{$body}");
     }
 
+    //5. Constructs headers.
+    //$timestamp = timestamp defines by make_timestamp()
+    //$signature = hashed signature defined by make_signature()
     private function make_headers(int $timestamp, string $signature)
     {
         return [
@@ -129,6 +145,11 @@ class APIClient
         ];
     }
 
+    //6. Makes request with elements defined in previous methods.
+    //$url = complete url
+    //$headers = array with Content-Type, X-ZAP-API-Key, X-ZAP-Signature and X-ZAP-Timestamp
+    //$method = http verb
+    //$body = 'json parsed' body request
     private function make_request(string $url, array $headers, string $method, string $body)
     {
         $curl = curl_init($url);
