@@ -88,7 +88,7 @@ class APIClient
     //Method you can use to see a single calendar resource picked by id.
     public function get_calendar_resource($id)
     {
-        $resource = '/api/v1/get_calendar_resources/';
+        $resource = '/api/v1/calendar-resources/';
         $method = 'GET';
         $params = [];
         $arr_body = [];
@@ -100,7 +100,7 @@ class APIClient
     //Check ZAP API doc to know available attributes.
     public function create_calendar_resource($arr_body)
     {
-        $resource = '/api/v1/get_calendar_resources';
+        $resource = '/api/v1/calendar-resources';
         $method = 'POST';
         $id = '';
         $params = [];
@@ -111,7 +111,7 @@ class APIClient
     //Method you can use to update a calendar resource picked by id with all attributes you want to modify in $arr_body.
     public function update_calendar_resource($id, $arr_body)
     {
-        $resource = '/api/v1/get_calendar_resources/';
+        $resource = '/api/v1/calendar-resources/';
         $method = 'PATCH';
         $params = [];
 
@@ -119,12 +119,34 @@ class APIClient
     }
 
     //Method you can use to delete a calendar resource picked by id.
-    public function destroy_get_calendar_resource($id)
+    public function destroy_calendar_resource($id)
     {
-        $resource = '/api/v1/get_calendar_resources/';
+        $resource = '/api/v1/calendar-resources/';
         $method = 'DELETE';
         $arr_body = [];
         $params = [];
+
+        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+    }
+
+    //Method you can use to see all classes of service, with page offset as $params.
+    public function get_classes_of_service(array $params = [])
+    {
+        $resource = '/api/v1/classes-of-service';
+        $method = 'GET';
+        $id = '';
+        $arr_body = [];
+
+        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+    }
+
+    //Method you can use to see a single class of service picked by id.
+    public function get_class_of_service($id)
+    {
+        $resource = '/api/v1/classes-of-service/';
+        $method = 'GET';
+        $params = [];
+        $arr_body = [];
 
         $result = $this->build_request($resource, $method, $id, $params, $arr_body);
     }
