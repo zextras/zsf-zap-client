@@ -74,6 +74,17 @@ class APIClient
         $result = $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
+    public function get_calendar_resources(array $params = [])
+    {
+        $resource = '/api/v1/calendar-resources';
+        $method = 'GET';
+        $id = '';
+        $arr_body = [];
+
+        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+    }
+
+
     //Calls methods which create url(1), timestamp(2), body(3), signature(4), headers(5) and make request(6).
     private function build_request(string $resource, string $method, string $id, array $params, array $arr_body)
     {
@@ -180,4 +191,5 @@ class APIClient
 
         var_dump($response);
     }
+
 }
