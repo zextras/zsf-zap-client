@@ -332,7 +332,7 @@ class APIClient
             die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
         }
 
-        var_dump(json_decode($response, true));
+        return json_decode($response, true);
     }
 
 }
