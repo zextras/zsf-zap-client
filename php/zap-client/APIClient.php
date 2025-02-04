@@ -206,6 +206,28 @@ class APIClient
         $result = $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
+    //Method you can use to see all domains, with page offset as $params.
+    public function get_domains(array $params = [])
+    {
+        $resource = '/api/v1/domains';
+        $method = 'GET';
+        $id = '';
+        $arr_body = [];
+
+        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+    }
+
+    //Method you can use to see a single domain picked by id.
+    public function get_domain($id)
+    {
+        $resource = '/api/v1/domains/';
+        $method = 'GET';
+        $params = [];
+        $arr_body = [];
+
+        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+    }
+
     //Calls methods which create url(1), timestamp(2), body(3), signature(4), headers(5) and make request(6).
     private function build_request(string $resource, string $method, string $id, array $params, array $arr_body)
     {
