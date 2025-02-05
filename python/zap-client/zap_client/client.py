@@ -48,7 +48,7 @@ class Client:
                     **self.__api_key.signature_headers(
                         body=body,
                         method=method,
-                        url=self.__url_for_path(path, with_port=False)
+                        url=self.__url_for_path(path)
                     ),
                     **headers
                 },
@@ -63,11 +63,14 @@ class Client:
         finally:
             connection.close()
 
-    def __url_for_path(self, path: str, with_port: bool = True):
+    def __url_for_path(self, path: str):
         url = 'https' if self.__secure else 'http'
         url += f'://{self.__host}'
 
-        if with_port and self.__port is not None:
+        if self.__port is not None and (
+                self.__secure == False and self.__port != 80 or
+                self.__secure == True and self.__port != 443
+        ):
             url += f':{self.__port}'
 
         return url + path
