@@ -1,5 +1,5 @@
+[See API doc here](https://zap.carboniocloud.fr/doc/api)
 ```php
-[See API doc here](https://zap.lab.carbonio.fr/doc/api)
 //Creates an APIClient instance.
 //Fill with your url address, your public key and your private key.
 $client = new APIClient('http://domain:port', 'xxxxxxxx...', 'xxxxxxxx...');
