@@ -27,7 +27,7 @@ class APIClient
         $id = '';
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see a single account picked by id.
@@ -38,7 +38,7 @@ class APIClient
         $params = [];
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to create an account with all attributes you want in $arr_body.
@@ -50,7 +50,7 @@ class APIClient
         $id = '';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to update an account picked by id with all attributes you want to modify in $arr_body.
@@ -60,7 +60,7 @@ class APIClient
         $method = 'PATCH';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to delete an account picked by id.
@@ -71,7 +71,7 @@ class APIClient
         $arr_body = [];
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see all calendar resources, with page offset as $params.
@@ -82,7 +82,7 @@ class APIClient
         $id = '';
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see a single calendar resource picked by id.
@@ -93,7 +93,7 @@ class APIClient
         $params = [];
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to create a calendar_resource with all attributes you want in $arr_body.
@@ -105,7 +105,7 @@ class APIClient
         $id = '';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to update a calendar resource picked by id with all attributes you want to modify in $arr_body.
@@ -115,7 +115,7 @@ class APIClient
         $method = 'PATCH';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to delete a calendar resource picked by id.
@@ -126,7 +126,7 @@ class APIClient
         $arr_body = [];
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see all classes of service, with page offset as $params.
@@ -137,7 +137,7 @@ class APIClient
         $id = '';
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see a single class of service picked by id.
@@ -148,7 +148,7 @@ class APIClient
         $params = [];
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see all distribution lists, with page offset as $params.
@@ -159,7 +159,7 @@ class APIClient
         $id = '';
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see a single distribution list picked by id.
@@ -170,7 +170,7 @@ class APIClient
         $params = [];
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to create a distribution list with all attributes you want in $arr_body.
@@ -182,7 +182,7 @@ class APIClient
         $id = '';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to update a distribution list picked by id with all attributes you want to modify in $arr_body.
@@ -192,7 +192,7 @@ class APIClient
         $method = 'PATCH';
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to delete a distribution list picked by id.
@@ -203,7 +203,7 @@ class APIClient
         $arr_body = [];
         $params = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see all domains, with page offset as $params.
@@ -214,7 +214,7 @@ class APIClient
         $id = '';
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Method you can use to see a single domain picked by id.
@@ -225,7 +225,7 @@ class APIClient
         $params = [];
         $arr_body = [];
 
-        $result = $this->build_request($resource, $method, $id, $params, $arr_body);
+        return $this->build_request($resource, $method, $id, $params, $arr_body);
     }
 
     //Calls methods which create url(1), timestamp(2), body(3), signature(4), headers(5) and make request(6).
@@ -235,8 +235,9 @@ class APIClient
         $timestamp = $this->make_timestamp();
         $body = $this->make_body($arr_body);
         $signature = $this->make_signature($url, $method, $body, $timestamp);
-        $headers = $this->make_headers($timestamp, $signature);
-        $this->make_request($url, $headers, $method, $body);
+        $curleaders = $this->make_headers($timestamp, $signature);
+
+        return $this->make_request($url, $curleaders, $method, $body);
     }
 
     //1. Creates url.
@@ -301,15 +302,15 @@ class APIClient
 
     //6. Makes request with elements defined in previous methods.
     //$url = complete url
-    //$headers = array with Content-Type, X-ZAP-API-Key, X-ZAP-Signature and X-ZAP-Timestamp
+    //$curleaders = array with Content-Type, X-ZAP-API-Key, X-ZAP-Signature and X-ZAP-Timestamp
     //$method = http verb
     //$body = 'json parsed' body request
-    private function make_request(string $url, array $headers, string $method, string $body)
+    private function make_request(string $url, array $curleaders, string $method, string $body)
     {
         $curl = curl_init($url);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $curleaders);
         if ($method === 'POST')
         {
             curl_setopt($curl, CURLOPT_POST, true);
@@ -326,11 +327,14 @@ class APIClient
         }
 
         $response = curl_exec($curl);
+
+        $error = curl_error($curl);
+        $code = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
 
-        if ($response === false) {
-            die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
-        }
+        if($error || !$response) throw new Exception("ERROR $code: $error");
+
+        if($code < 200 || $code > 299 ) throw new Exception("ERROR $code: $response");
 
         return json_decode($response, true);
     }
