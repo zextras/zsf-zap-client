@@ -1,4 +1,5 @@
 ```php
+[See API doc here](https://zap.lab.carbonio.fr/doc/api)
 //Creates an APIClient instance.
 //Fill with your url address, your public key and your private key.
 $client = new APIClient('http://domain:port', 'xxxxxxxx...', 'xxxxxxxx...');
@@ -15,12 +16,10 @@ $client->get_accounts([
 $client->get_account('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 //Creates an account with attributes you want.
-//In this example we only set name, displayName and zimbra PasswordMustChange
-//classOfServicesId is required 
+//In this example we only set name, displayName and zimbra PasswordMustChange 
 //Check API doc to see all the available ones.
 $client->create_account([
     'name' => 'fill here with email address',
-    'classOfServiceId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     'displayName' => 'fill here with name to display',
     'zimbraPasswordMustChange' => true,
 ]);
