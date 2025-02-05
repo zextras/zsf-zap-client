@@ -240,7 +240,6 @@ class APIClient
         return $this->make_request($url, $curleaders, $method, $body);
     }
 
-    //1. Creates url.
     //$resource = endpoint
     //$id = account id
     //$params = page offset
@@ -256,13 +255,11 @@ class APIClient
         return $this->root . $resource . $id . $params;
     }
 
-    //2. Defines timestamp.
     private function make_timestamp(): int
     {
         return round(microtime(true) * 1000);
     }
 
-    //3. Defines body.
     //$arr_body = request body not 'json parsed'
     private function make_body(array $arr_body)
     {
@@ -277,7 +274,6 @@ class APIClient
         return $body;
     }
 
-    //4. Constructs signature.
     //$url = complete url
     //$method = http verb
     //$body = 'json parsed' body request
@@ -287,7 +283,6 @@ class APIClient
         return hash('sha256', "{$this->apiSecret}|{$timestamp}|{$method}|{$url}|{$body}");
     }
 
-    //5. Constructs headers.
     //$timestamp = timestamp defines by make_timestamp()
     //$signature = hashed signature defined by make_signature()
     private function make_headers(int $timestamp, string $signature)
@@ -300,7 +295,6 @@ class APIClient
         ];
     }
 
-    //6. Makes request with elements defined in previous methods.
     //$url = complete url
     //$curleaders = array with Content-Type, X-ZAP-API-Key, X-ZAP-Signature and X-ZAP-Timestamp
     //$method = http verb
