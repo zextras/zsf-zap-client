@@ -15,10 +15,12 @@ $client->get_accounts([
 $client->get_account('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 //Creates an account with attributes you want.
-//In this example we only set name, displayName and zimbra PasswordMustChange 
+//In this example we only set name, displayName and zimbra PasswordMustChange
+//classOfServicesId is required 
 //Check API doc to see all the available ones.
 $client->create_account([
     'name' => 'fill here with email address',
+    'classOfServideId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     'displayName' => 'fill here with name to display',
     'zimbraPasswordMustChange' => true,
 ]);
