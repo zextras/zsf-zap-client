@@ -332,7 +332,8 @@ class APIClient
         $code = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
 
-        if($error || !$response) throw new Exception("ERROR $code: $error");
+        if($error) throw new Exception("ERROR $code: $error");
+        if(!$response) return null;
 
         if($code < 200 || $code > 299 ) throw new Exception("ERROR $code: $response");
 
