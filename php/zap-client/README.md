@@ -20,7 +20,7 @@ $client->get_account('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 //Check API doc to see all the available ones.
 $client->create_account([
     'name' => 'fill here with email address',
-    'classOfServideId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+    'classOfServiceId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     'displayName' => 'fill here with name to display',
     'zimbraPasswordMustChange' => true,
 ]);
