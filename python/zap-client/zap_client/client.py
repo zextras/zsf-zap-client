@@ -1,6 +1,7 @@
 import http.client
 import json
 import typing
+import urllib.parse
 
 from .api_key import ApiKey
 from .exceptions import *
@@ -110,6 +111,17 @@ class Client:
 
     def destroy_distribution_list(self, id: str):
         self.__request('DELETE', f'/api/v1/distribution-lists/{id}')
+
+    def find_by_email_address(self, email_address: str):
+        params = urllib.parse.urlencode({'name': email_address})
+
+        path = f'/api/v1/search/by-email-address?{params}'
+
+        return self.__request(
+            'GET',
+            path,
+            transform_response=_parse_response_with_none_on_not_found
+        )
 
     def get_account(self, id: str):
         return self.__request(
