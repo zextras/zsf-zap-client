@@ -1,6 +1,7 @@
 import http.client
 import json
 import typing
+import urllib.parse
 
 from .api_key import ApiKey
 from .exceptions import *
@@ -118,11 +119,19 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_accounts(self, *, page: int = None):
-        if page is None:
+    def get_accounts(self, *, items: int = None, page: int = None):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
             path = '/api/v1/accounts'
         else:
-            path = f'/api/v1/accounts/?page={page}'
+            path = f'/api/v1/accounts?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -137,11 +146,19 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_calendar_resources(self, page: int = None):
-        if page is None:
+    def get_calendar_resources(self, items: int = None, page: int = None):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
             path = '/api/v1/calendar-resources'
         else:
-            path = f'/api/v1/calendar-resources/?page={page}'
+            path = f'/api/v1/calendar-resources?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -156,11 +173,19 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_classes_of_service(self, page: int = None):
-        if page is None:
+    def get_classes_of_service(self, items: int = None, page: int = None):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
             path = '/api/v1/classes-of-service'
         else:
-            path = f'/api/v1/classes-of-service/?page={page}'
+            path = f'/api/v1/classes-of-service?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -175,11 +200,19 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_distribution_lists(self, page: int = None):
-        if page is None:
+    def get_distribution_lists(self, items: int = None, page: int = None):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
             path = '/api/v1/distribution-lists'
         else:
-            path = f'/api/v1/distribution-lists/?page={page}'
+            path = f'/api/v1/distribution-lists?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -194,11 +227,19 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_domains(self, page: int = None):
-        if page is None:
-            path = '/api/v1/classes-of-service'
+    def get_domains(self, items: int = None, page: int = None):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
+            path = '/api/v1/domains'
         else:
-            path = f'/api/v1/classes-of-service/?page={page}'
+            path = f'/api/v1/domains?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
