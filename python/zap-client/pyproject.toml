@@ -1,20 +1,10 @@
-[tool.poetry]
-name = "zap-client"
-version = "0.1.0"
-description = "API client for Zextras Admin Plus"
-license = 'GPL-3.0-or-later'
-authors = ["Théo Remon <theo.remon@zextras.fr>"]
-readme = "README.md"
-homepage = "https://github.com/zextras/zsf-zap-client"
-repository = "https://github.com/zextras/zsf-zap-client"
-classifiers = [
-    'Intended Audience :: Developers'
+[project]
+authors = [
+    { email = "theo.remon@zextras.fr", name = "Théo Remon" }
 ]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+description = "API client for Zextras Admin Plus"
+name = "zap-client"
+license = { text = 'GPL-3.0-or-later' }
+readme = "README.md"
+requires-python = ">= 3.10"
+version = "0.1.0"
