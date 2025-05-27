@@ -119,11 +119,20 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_accounts(self, *, items: int = None, page: int = None):
+    def get_accounts(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
         params = {}
 
         if items is not None:
             params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
 
         if page is not None:
             params['page'] = page
@@ -146,11 +155,20 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_calendar_resources(self, items: int = None, page: int = None):
+    def get_calendar_resources(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
         params = {}
 
         if items is not None:
             params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
 
         if page is not None:
             params['page'] = page
@@ -173,11 +191,20 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_classes_of_service(self, items: int = None, page: int = None):
+    def get_classes_of_service(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
         params = {}
 
         if items is not None:
             params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
 
         if page is not None:
             params['page'] = page
@@ -200,11 +227,20 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_distribution_lists(self, items: int = None, page: int = None):
+    def get_distribution_lists(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
         params = {}
 
         if items is not None:
             params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
 
         if page is not None:
             params['page'] = page
@@ -227,11 +263,20 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
-    def get_domains(self, items: int = None, page: int = None):
+    def get_domains(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
         params = {}
 
         if items is not None:
             params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
 
         if page is not None:
             params['page'] = page
