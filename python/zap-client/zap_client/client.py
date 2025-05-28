@@ -103,6 +103,15 @@ class Client:
             transform_response=_parse_response
         )
 
+    def create_signature(self, attributes: dict):
+        return self.__request(
+            'POST',
+            '/api/v1/signatures',
+            json.dumps(attributes),
+            {'Content-Type': 'application/json'},
+            transform_response=_parse_response
+        )
+
     def destroy_account(self, id: str):
         self.__request('DELETE', f'/api/v1/accounts/{id}')
 
@@ -111,6 +120,9 @@ class Client:
 
     def destroy_distribution_list(self, id: str):
         self.__request('DELETE', f'/api/v1/distribution-lists/{id}')
+
+    def destroy_signature(self, id: str):
+        self.__request('DELETE', f'/api/v1/signatures/{id}')
 
     def get_account(self, id: str):
         return self.__request(
@@ -292,6 +304,42 @@ class Client:
             transform_response=_parse_response
         )
 
+    def get_signature(self, id: str):
+        return self.__request(
+            'GET',
+            f'/api/v1/signatures/{id}',
+            transform_response=_parse_response_with_none_on_not_found
+        )
+
+    def get_signatures(
+            self,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
+            path = '/api/v1/signatures'
+        else:
+            path = f'/api/v1/signatures?{urllib.parse.urlencode(params)}'
+
+        return self.__request(
+            'GET',
+            path,
+            transform_response=_parse_response
+        )
+
     def update_account(self, id: str, attributes: dict):
         return self.__request(
             'PUT',
@@ -314,6 +362,15 @@ class Client:
         return self.__request(
             'PUT',
             f'/api/v1/distribution-lists/{id}',
+            json.dumps(attributes),
+            {'Content-Type': 'application/json'},
+            transform_response=_parse_response
+        )
+
+    def update_signature(self, id: str, attributes: dict):
+        return self.__request(
+            'PUT',
+            f'/api/v1/signatures/{id}',
             json.dumps(attributes),
             {'Content-Type': 'application/json'},
             transform_response=_parse_response
