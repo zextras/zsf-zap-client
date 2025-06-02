@@ -145,8 +145,8 @@ class Client:
     def destroy_signature(self, id: str):
         self.__request('DELETE', f'/api/v1/signatures/{id}')
 
-    def destroy_signature_link(self, signature_id: str, id: str):
-        self.__request('DELETE', f'/api/v1/signatures/{signature_id}/links/{id}')
+    def destroy_signature_link(self, id: str):
+        self.__request('DELETE', f'/api/v1/signature-links/{id}')
 
     def get_account(self, id: str):
         return self.__request(
@@ -158,8 +158,10 @@ class Client:
     def get_accounts(
             self,
             *,
+            domain_id: str = None,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -173,10 +175,15 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
-            path = '/api/v1/accounts'
+        if domain_id is not None:
+            path = f'/api/v1/domains/{domain_id}/accounts'
+        elif organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/accounts'
         else:
-            path = f'/api/v1/accounts?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/accounts'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -194,8 +201,10 @@ class Client:
     def get_calendar_resources(
             self,
             *,
+            domain_id: str = None,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -209,10 +218,15 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
-            path = '/api/v1/calendar-resources'
+        if domain_id is not None:
+            path = f'/api/v1/domains/{domain_id}/calendar-resources'
+        elif organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/calendar-resources'
         else:
-            path = f'/api/v1/calendar-resources?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/calendar-resources'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -232,6 +246,7 @@ class Client:
             *,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -245,10 +260,13 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
-            path = '/api/v1/classes-of-service'
+        if organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/classes-of-service'
         else:
-            path = f'/api/v1/classes-of-service?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/classes-of-service'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -266,8 +284,10 @@ class Client:
     def get_distribution_lists(
             self,
             *,
+            domain_id: str = None,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -281,10 +301,15 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
-            path = '/api/v1/distribution-lists'
+        if domain_id is not None:
+            path = f'/api/v1/domains/{domain_id}/distribution-lists'
+        elif organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/distribution-lists'
         else:
-            path = f'/api/v1/distribution-lists?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/distribution-lists'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -304,6 +329,7 @@ class Client:
             *,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -317,10 +343,13 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
-            path = '/api/v1/domains'
+        if organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/domains'
         else:
-            path = f'/api/v1/domains?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/domains'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -337,11 +366,12 @@ class Client:
 
     def get_signature_links(
             self,
-            signature_id: str,
             *,
             items: int = None,
             metadata_only: bool = False,
-            page: int = None
+            page: int = None,
+            organization_id: str = None,
+            signature_id: str = None
     ):
         params = {}
 
@@ -354,10 +384,15 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
+        if signature_id is not None:
             path = f'/api/v1/signatures/{signature_id}/links'
+        elif organization_id is not None:
+            path = f'/api/v1/organizations/{organization_id}/signature-links'
         else:
-            path = f'/api/v1/signatures/{signature_id}/links?{urllib.parse.urlencode(params)}'
+            path = '/api/v1/signature-links'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
@@ -370,6 +405,7 @@ class Client:
             *,
             items: int = None,
             metadata_only: bool = False,
+            organization_id: str = None,
             page: int = None
     ):
         params = {}
@@ -383,10 +419,13 @@ class Client:
         if page is not None:
             params['page'] = page
 
-        if len(params) == 0:
+        if organization_id is None:
             path = '/api/v1/signatures'
         else:
-            path = f'/api/v1/signatures?{urllib.parse.urlencode(params)}'
+            path = f'/api/v1/organizations/{organization_id}/signatures'
+
+        if len(params) > 0:
+            path += f'?{urllib.parse.urlencode(params)}'
 
         return self.__request(
             'GET',
