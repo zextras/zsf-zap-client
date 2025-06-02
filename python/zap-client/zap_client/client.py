@@ -103,13 +103,34 @@ class Client:
             transform_response=_parse_response
         )
 
-    def create_signature(self, attributes: dict):
+    def create_signature(self, organization_id: str, attributes: dict):
         return self.__request(
             'POST',
-            '/api/v1/signatures',
+            f'/api/v1/organizations/{organization_id}/signatures',
             json.dumps(attributes),
             {'Content-Type': 'application/json'},
             transform_response=_parse_response
+        )
+
+    def create_signature_link(self, signature_id: str, attributes: dict):
+        return self.__request(
+            'POST',
+            f'/api/v1/signatures/{signature_id}/links',
+            json.dumps(attributes),
+            {'Content-Type': 'application/json'},
+            transform_response=_parse_response
+        )
+
+    def deploy_signature_link(self, signature_id: str, id: str):
+        return self.__request(
+            'POST',
+            f'/api/v1/signatures/{signature_id}/links/{id}/deploy'
+        )
+
+    def deploy_signature_links(self, signature_id: str):
+        return self.__request(
+            'POST',
+            f'/api/v1/signatures/{signature_id}/links/all/deploy'
         )
 
     def destroy_account(self, id: str):
@@ -123,6 +144,9 @@ class Client:
 
     def destroy_signature(self, id: str):
         self.__request('DELETE', f'/api/v1/signatures/{id}')
+
+    def destroy_signature_link(self, signature_id: str, id: str):
+        self.__request('DELETE', f'/api/v1/signatures/{signature_id}/links/{id}')
 
     def get_account(self, id: str):
         return self.__request(
@@ -311,6 +335,36 @@ class Client:
             transform_response=_parse_response_with_none_on_not_found
         )
 
+    def get_signature_links(
+            self,
+            signature_id: str,
+            *,
+            items: int = None,
+            metadata_only: bool = False,
+            page: int = None
+    ):
+        params = {}
+
+        if items is not None:
+            params['items'] = items
+
+        if metadata_only:
+            params['metadata_only'] = 1
+
+        if page is not None:
+            params['page'] = page
+
+        if len(params) == 0:
+            path = f'/api/v1/signatures/{signature_id}/links'
+        else:
+            path = f'/api/v1/signatures/{signature_id}/links?{urllib.parse.urlencode(params)}'
+
+        return self.__request(
+            'GET',
+            path,
+            transform_response=_parse_response
+        )
+
     def get_signatures(
             self,
             *,
@@ -393,3 +447,5 @@ def _parse_response(response: http.client.HTTPResponse):
 def _parse_response_with_none_on_not_found(response: http.client.HTTPResponse):
     if response.status != 404:
         return _parse_response(response)
+
+    return None
